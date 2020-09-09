@@ -1,0 +1,1 @@
+console.log('ts，the same to js')
