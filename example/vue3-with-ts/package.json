@@ -6,8 +6,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development s-cli dev",
-    "build": "cross-env NODE_ENV=production s-cli build --progress --hide-modules"
+    "dev": "cross-env NODE_ENV=development saycli dev",
+    "build": "cross-env NODE_ENV=production saycli build --progress --hide-modules"
   },
   "dependencies": {
     "vue": "^3.0.0-rc.5"

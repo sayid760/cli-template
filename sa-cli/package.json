@@ -1,13 +1,15 @@
 {
-  "name": "s-cli",
-  "version": "1.0.1",
+  "name": "say-cli",
+  "version": "1.0.4",
   "description": "",
   "main": "cli.js",
   "scripts": {},
   "bin": {
-    "s-cli": "./bin/cli"
+    "saycli": "./bin/cli"
   },
-  "keywords": [],
+  "keywords": [
+    "vue3 cli"
+  ],
   "author": "sayid760",
   "license": "ISC",
   "dependencies": {
@@ -29,5 +31,9 @@
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^5.1.4",
     "yargs": "^15.4.1"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/sayid760/cli-template/issues"
+  },
+  "homepage": "https://github.com/sayid760/cli-template#readme"
 }
