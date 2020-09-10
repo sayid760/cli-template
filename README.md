@@ -1,4 +1,4 @@
-# s-cli
+# saycli
 vue-cli简易版cli
 用于快速创建一个 vue2/3+js/ts 应用的脚手架
 
