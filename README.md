@@ -4,7 +4,7 @@ vue-cli简易版cli
 
 ## How to use
 ```js
-$ s-cli init <Your Project Name>
+$ saycli init <Your Project Name>
 $ cd <Your Project Name>
 $ npm i
 $ npm run dev
@@ -12,7 +12,7 @@ $ npm run build
 ```
 ## command 
 ```js
-s-cli init   // 拉取模板
-s-cli dev    // 启动webpack及热更新，s-cli dev --PORT=8081 改变port
-s-cli build  // 打包
+saycli init   // 拉取模板
+saycli dev    // 启动webpack及热更新，saycli dev --PORT=8081 改变port
+saycli build  // 打包
 ```
