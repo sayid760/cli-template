@@ -2,13 +2,7 @@ const inquirer = require('inquirer')
 const fs = require('fs')
 const shell = require('shelljs')
 
-/**
- * 应用初始化函数
- *
- * @export
- * @param {Optional} option 应用全局配置
- * @returns {Promise<void>}
- */
+// 应用初始化函数
 module.exports.checkRepeat = (option) => {
   const { appName } = option
   return new Promise(async (resolve, reject) => {

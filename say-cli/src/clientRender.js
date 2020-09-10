@@ -1,4 +1,3 @@
-// 本文件目的是以React jsx 为模版替换掉html-webpack-plugin以及传统模版引擎, 统一ssr/csr都使用React组件来作为页面的骨架和内容部分
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
 const { resolve }  = require('path')
@@ -18,23 +17,6 @@ process.on && process.on('message', async data => {
     await dev()
   }
 })
-
-function genHistoryApiFallbackRewrites (baseUrl, pages = {}) {
-  const path = require('path')
-  const multiPageRewrites = Object
-    .keys(pages)
-    // sort by length in reversed order to avoid overrides
-    // eg. 'page11' should appear in front of 'page1'
-    .sort((a, b) => b.length - a.length)
-    .map(name => ({
-      from: new RegExp(`^/${name}`),
-      to: path.posix.join(baseUrl, pages[name].filename || `${name}.html`)
-    }))
-  return [
-    ...multiPageRewrites,
-    { from: /./, to: path.posix.join(baseUrl, 'index.html') }
-  ]
-}
 
 const dev = async (argv) => {
   const PORT = (argv && argv.PORT) || process.env.FE_PORT || 8000

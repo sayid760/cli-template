@@ -1,20 +1,8 @@
-
-// const program = require('commander')
-// const {init} = require('./init')
-
-// program
-//     .command('init <name>')
-//     .description('init project')
-//     .action(init)
-
-// program.parse(process.argv)
-
-
-
 const yargs = require('yargs')
 const {init} = require('./init')
 const {processError} = require('./util')
 
+// 界面交互配置
 yargs
   .command('init [appName]', 'init the program', {}, async (argv) => {
     const option = {
