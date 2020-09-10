@@ -1,13 +1,17 @@
-# rssr-cli
-
-用于快速创建一个 Koa+React+SSR 应用的脚手架
+# s-cli
+用于快速创建一个 vue2/3+js/ts 应用的脚手架
 
 ## How to use
-```
-$ npm install rssr-cli -g
-$ rssr-cli init <Your Project Name>
+```js
+$ s-cli init <Your Project Name>
 $ cd <Your Project Name>
 $ npm i
-$ npm start
-$ open http://localhost:7001
+$ npm run dev
+$ npm run build
+```
+## command 
+```js
+s-cli init   // 拉取模板
+s-cli dev    // 启动webpack及热更新，s-cli dev --PORT=8081 改变port
+s-cli build  // 打包
 ```
