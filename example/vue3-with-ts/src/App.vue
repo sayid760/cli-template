@@ -3,6 +3,12 @@
     <img src="./assets/logo.png">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
+    <div :class="{fixed:top>130}">
+      <input type="text" v-model="state.newTodo" @keyup.enter="addNewTodo">
+    </div>
+    <ul>
+      <li v-for="(todo, index) in state.todos" :key="index">{{todo.title}}</li>
+    </ul>
     <ul>
       <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
       <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
@@ -19,13 +25,39 @@
   </div>
 </template>
 
-<script>
+<script lang='ts'>
+// 按需引入，只打包引入的 tree-shaking
+import {reactive, ref, computed, onMounted, watchEffect} from 'vue'
+import useScroll from './scroll'
+
 export default {
-  name: 'app',
-  data () {
-    return {
+  setup(){
+    // reactive把对象变成响应式
+    const state = reactive({
+      newTodo: '',
+      todos: [
+        {id:1, title:'aaaa', computed:false},
+        {id:2, title:'bbbb', computed:false}
+      ],
       msg: 'Welcome to Your Vue.js App'
+    })
+    function addNewTodo(){
+      const val = state.newTodo
+      if(!val) return
+      state.todos.push({
+        id:state.todos.length + 1,
+        title:val,
+        computed:false
+      })
+      state.newTodo = ''
     }
+    watchEffect(()=>{
+      console.log('state is', state)
+    })
+    // 新增滚动fixed
+    const {top} = useScroll()
+    console.log(top)
+    return {state, addNewTodo, top}
   }
 }
 </script>
@@ -56,5 +88,11 @@ li {
 
 a {
   color: #42b983;
+}
+
+.fixed{
+  position: fixed;
+  top: 20px;
+  left: 20px
 }
 </style>

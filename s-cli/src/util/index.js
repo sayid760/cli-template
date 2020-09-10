@@ -2,6 +2,7 @@ const path = require('path')
 const { promisify } = require('util')
 const download = promisify(require('download-git-repo'))
 const fs = require('fs') 
+const tsUrl = '', jsUrl = ''
 
 const processError = (err) => {
   if (err) {
@@ -38,11 +39,14 @@ const getWithPromise = (url, timeout) => {
 // 缓存判断是否有效处理
 const getVersionEffective = async (option) => {
   if (fs.existsSync(resolveApp('./cache'))) {
+    const { vueVersion } = option
     const url = option.language === 'typescript' ? tsUrl : jsUrl
     const language = option.language === 'javascript' ? 'js' : 'ts'
+    console.log(vueVersion)
+    console.log(option.language)
     try {
       const { 'dist-tags': { latest } } = await getWithPromise(url)
-      const localVersion = require(resolveApp(`./cache/example/with-${language}/package.json`)).version.trim()
+      const localVersion = require(resolveApp(`./cache/example/${vueVersion}-with-${language}/package.json`)).version.trim()
       // 如果版本一样就不用更新
       return latest === localVersion
     } catch (error) {

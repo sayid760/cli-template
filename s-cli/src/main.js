@@ -16,7 +16,7 @@ const {init} = require('./init')
 const {processError} = require('./util')
 
 yargs
-  .command('init <name>', 'init the program', {}, async (argv) => {
+  .command('init [appName]', 'init the program', {}, async (argv) => {
     const option = {
       appName: argv.appName || 'app',
       language: 'javascript',

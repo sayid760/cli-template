@@ -11,14 +11,13 @@ module.exports.init = async (option) => {
   if(option.vueVersion == 'vue3'){
     option.language = 'typescript'
   } 
-  console.log(option)
   // 判断当前appName是否已存在
-  // await checkRepeat(option)
+  await checkRepeat(option)
   // // 显示loading
-  // spinner.start()
+  spinner.start()
   // // 缓存比对
-  // await cacheMange(option)
-  // spinner.succeed()
-  // process.exit()
+  await cacheMange(option)
+  spinner.succeed()
+  process.exit()
 }
 

@@ -13,8 +13,6 @@ const merge = require('webpack-merge')
 const baseDir = process.env.BASE_DIR || '.'
 const clientConfig = require(resolve(cwd, baseDir, './build/webpack.config'))
 
-console.log('=========>')
-
 process.on && process.on('message', async data => {
   if (data.msg === 'start dev') {
     await dev()

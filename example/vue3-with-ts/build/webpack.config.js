@@ -1,5 +1,5 @@
 const path = require('path')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const { VueLoaderPlugin } = require('vue-loader')
 const OptimizeCss=require('optimize-css-assets-webpack-plugin');
 const UglifyjsPlugin=require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -12,7 +12,7 @@ function resolve(dir) {
 module.exports = {
   mode: 'development',
   entry: {
-    app: resolve('../src/main.js'),
+    app: resolve('../src/main.ts'),
   },
   output: {
     path: resolve('../dist'),
@@ -37,15 +37,28 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          loaders: {
+          compilerOptions: {
+            preserveWhitespace: false,
           }
-          // other vue-loader options go here
         }
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
+      },
+      {
+        test: /\.(js|mjs|jsx|ts|tsx)$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          // cacheDirectory: true,
+          // cacheCompression: false,
+          presets: [
+            '@babel/preset-env',
+            '@babel/preset-typescript'
+          ]
+        }
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -69,6 +82,7 @@ module.exports = {
   },
   devtool: 'cheap-module-eval-source-map',
   plugins: [
+    new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].css', // 把css抽离到[name].css
     }),
@@ -80,7 +94,6 @@ module.exports = {
         chunks: ['app'],
         inject: true,
     }),
-    new VueLoaderPlugin()
   ],
 };
 
